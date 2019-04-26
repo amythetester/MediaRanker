@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   resources :works
-  resources :users
+  resources :users, only: [:index, :new]
 end
