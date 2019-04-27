@@ -17,6 +17,20 @@ class WorksController < ApplicationController
   end
 
   def create
+    work = Work.new(work_params)
+
+    is_successful = work.save
+
+    if is_successful
+      flash[:success] = "Work added successfully"
+      redirect_to work_path(work.id)
+    else
+      work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
+
+      render :new, status: :bad_request
+    end
   end
 
   def edit
