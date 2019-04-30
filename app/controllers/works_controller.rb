@@ -37,6 +37,17 @@ class WorksController < ApplicationController
   end
 
   def update
+    is_successful = @work.update(work_params)
+
+    if is_successful
+      flash[:success] = "work updated successfully"
+      redirect_to work_path(@work.id)
+    else
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
+      render :edit, status: :bad_request
+    end
   end
 
   def destroy
