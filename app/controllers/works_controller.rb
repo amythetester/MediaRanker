@@ -51,6 +51,14 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    if @work.nil?
+      flash[:error] = "That work does not exist"
+    else
+      @work.destroy
+      flash[:success] = "#{@work.title} deleted"
+    end
+
+    redirect_to works_path
   end
 
   private

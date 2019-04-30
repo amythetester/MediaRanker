@@ -109,4 +109,17 @@ describe WorksController do
       expect(work_to_update.description).must_equal works(:holes).description
     end
   end
+
+  describe "destroy" do
+    it "can delete a work" do
+      new_work = Work.create(title: "The Martian", category: "movie", publication_year: 2017, creator: "Some Person", description: "stuff happens")
+
+      expect {
+        delete work_path(new_work.id)
+      }.must_change "Work.count", -1
+
+      must_respond_with :redirect
+      must_redirect_to works_path
+    end
+  end
 end
