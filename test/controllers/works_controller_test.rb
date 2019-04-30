@@ -66,15 +66,7 @@ describe WorksController do
 
   describe "update" do
     it "will update an existing work" do
-      starter_input = {
-        category: "movie",
-        title: "The Fox and the Hound",
-        creator: "Disney",
-        publication_year: 1990,
-        description: "Destined enemies become unlikely friends",
-      }
-
-      work_to_update = Work.create(starter_input)
+      work_to_update = works(:holes)
 
       input_title = "101 Spotted Puppies"
       input_description = "Crazy person gets their just desserts"
@@ -96,15 +88,7 @@ describe WorksController do
     end
 
     it "will return a bad_request (400) when asked to update with invalid data" do
-      starter_input = {
-        category: "movie",
-        title: "The Fox and the Hound",
-        creator: "Disney",
-        publication_year: 1990,
-        description: "Destined enemies become unlikely friends",
-      }
-
-      work_to_update = Work.create(starter_input)
+      work_to_update = works(:holes)
 
       input_title = "" # Invalid Title
       input_description = "The best movie"
@@ -121,10 +105,8 @@ describe WorksController do
 
       must_respond_with :bad_request
       work_to_update.reload
-      expect(work_to_update.title).must_equal starter_input[:title]
-      expect(work_to_update.description).must_equal starter_input[:description]
+      expect(work_to_update.title).must_equal works(:holes).title
+      expect(work_to_update.description).must_equal works(:holes).description
     end
-
-    # edge case: it should render a 404 if the book was not found
   end
 end
