@@ -1,0 +1,26 @@
+<h3>
+  Category: <%= @work.category%>
+</h3>
+
+<h2>
+  Title: <%= @work.title %>
+</h2>
+
+<h3>
+  Description: <%= @work.description %>
+</h3>
+
+<p>
+  Creator: <%= @work.creator %>
+</p>
+
+<p>
+  Publication Year: <%= @work.publication_year %>
+</p>
+
+<ul>
+  <li><%= link_to "Edit #{@work.title}", edit_work_path(@work.id) %></li>
+  <li><%= link_to "Back to All Tasks", works_path %></li>
+  <li><%= link_to "Delete #{@work.title}", 
+      work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to delete the #{@work.category} #{@work.title}?"} %></li>
+</ul>

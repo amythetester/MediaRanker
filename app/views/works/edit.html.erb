@@ -6,7 +6,7 @@
   <p>Please fill out this form to update a work</p>
 
   <%= f.label :category %>
-  <%= f.select :category, %w[Book, Movie, Album], include_blank: true %>
+  <%= f.select :category, %w[album book movie] %>
   <%= f.label :title%>
   <%= f.text_field :title%>
   <%= f.label :description %>
