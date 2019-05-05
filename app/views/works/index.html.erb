@@ -1,0 +1,51 @@
+<h2>Media Ranker Works</h2>
+
+<h3><%= link_to "Add Work", new_work_path %></h3>
+
+<h3>Albums</h3>
+<ul>
+<% @works = Work.category("album").order(:title) %>
+<% @works.each do |work| %>
+    <li>
+        Title: <%= work.title %>, 
+        Description: <%= work.description %>,
+        Creator: <%= work.creator %>,
+        Publication Year: <%= work.publication_year %>,
+        <br>
+        <%= link_to "View Work", work_path(work.id) %>
+        <%= link_to "Delete", work_path(work.id), method: :delete, data: {confirm: "Are you sure you want to delete the #{work.category} #{work.title}?"} %>
+    </li>
+<% end %>
+</ul>
+
+<h3>Books</h3>
+<ul>
+<% @works = Work.category("book").order(:title) %>
+<% @works.each do |work| %>
+    <li>
+        Title: <%= work.title %>, 
+        Description: <%= work.description %>,
+        Creator: <%= work.creator %>,
+        Publication Year: <%= work.publication_year %>,
+        <br>
+        <%= link_to "View Work", work_path(work.id) %>
+        <%= link_to "Delete", work_path(work.id), method: :delete, data: {confirm: "Are you sure you want to delete the #{work.category} #{work.title}?"} %>
+    </li>
+<% end %>
+</ul>
+
+<h3>Movies</h3>
+<ul>
+<% @works = Work.category("movie").order(:title) %>
+<% @works.each do |work| %>
+    <li>
+        Title: <%= work.title %>, 
+        Description: <%= work.description %>,
+        Creator: <%= work.creator %>,
+        Publication Year: <%= work.publication_year %>,
+        <br>
+        <%= link_to "View Work", work_path(work.id) %>
+        <%= link_to "Delete", work_path(work.id), method: :delete, data: {confirm: "Are you sure you want to delete the #{work.category} #{work.title}?"} %>
+    </li>
+<% end %>
+</ul>
