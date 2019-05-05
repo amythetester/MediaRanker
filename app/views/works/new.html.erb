@@ -1,0 +1,23 @@
+<h2>Create New Work</h2>
+
+<%= form_with model: @work, class: 'create-work' do |f| %>
+
+  <p>Please fill out this form to create new work</p>
+
+  <%= f.label :category %>
+  <%= f.select :category, %w[album book movie], include_blank: true %>
+  <%= f.label :title%>
+  <%= f.text_field :title%>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :creator%>
+  <%= f.text_field :creator%>
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year%>
+
+  <br><br>
+
+  <%= f.submit "Add Work", class: "work-form__submit-btn" %>
+
+  <%= link_to "Back to Work Page", works_path %>
+<% end %>
