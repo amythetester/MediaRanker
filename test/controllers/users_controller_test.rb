@@ -50,4 +50,28 @@ describe UsersController do
       must_respond_with :redirect
     end
   end
+
+  describe "login" do
+    it "can log in an existing user" do
+      user_count = User.count
+
+      user = perform_login
+
+      expect(user_count).must_equal User.count
+
+      expect(session[:user_id]).must_equal user.id
+    end
+
+    it "can log in a new user" do
+      user = User.new(username: "bob")
+
+      expect {
+        perform_login(user)
+      }.must_change "User.count", 1
+
+      user = User.find_by(username: "bob")
+
+      expect(session[:user_id]).must_equal user.id
+    end
+  end
 end
