@@ -51,7 +51,6 @@ describe WorksController do
         post works_path, params: test_input
       }.must_change "Work.count", 1
 
-      # Assert
       new_work = Work.find_by(title: input_title)
       expect(new_work).wont_be_nil
       expect(new_work.category).must_equal input_category

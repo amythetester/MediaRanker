@@ -1,0 +1,7 @@
+<h2><% "User Summary: #{@user.username}" %></h2>
+<p><% "Joined site: #{@user.created_at}"%></p>
+
+<ul>
+    <li><%= link_to "See all Users", users_path %></li>
+    <li><%= link_to "Back to Media List", works_path %></li>
+</ul>

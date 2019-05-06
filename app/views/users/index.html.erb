@@ -4,12 +4,11 @@
 <% @users.each do |user| %>
     <li>
         Username: <%= user.username %>, 
-        Joined: <%= user.created_date %>,
+        Joined: <%= user.created_at %>,
     </li>
 <% end %>
 </ul>
 
 <ul>
-    <li><%= link_to "See all Users", users_path %></li>
     <li><%= link_to "Back to Media List", works_path %></li>
 </ul>
